@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Service | Innovative Infosys</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .service-booking-section {
+            background-color: var(--neutral-color);
+            min-height: calc(100vh - 80px); /* Account for padding */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+        }
+        .booking-card {
+            background-color: #F8FAFC;
+            padding: 40px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .booking-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container d-flex" style="justify-content: space-between; align-items: center;">
+            <div class="logo">
+                <a href="index.html" style="font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--primary-color);">
+                    <i class="fa-solid fa-microchip" style="color: var(--accent-color);"></i> Innovative<span style="color: var(--accent-color);">Infosys</span>
+                </a>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#shop">Shop</a></li>
+                    <li><a href="index.html#why-choose-us">Why Us</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="admin.html" style="color: var(--accent-color); font-weight: bold;"><i class="fa-solid fa-user-shield"></i> Admin</a></li>
+                </ul>
+            </nav>
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <a href="tel:+918275529990" class="btn btn-primary d-none-mobile">Call Now</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="service-booking-section">
+        <div class="booking-card">
+            <div class="booking-header">
+                <h2><i class="fa-solid fa-wrench" style="color: var(--accent-color); margin-right: 8px;"></i> Book a Repair or Service</h2>
+                <p style="color: var(--text-light); margin-top: 8px;">Fill out the details below so we can accurately diagnose the issue. We will contact you immediately via WhatsApp to arrange an appointment!</p>
+            </div>
+            
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label class="form-label"><i class="fa-solid fa-user" style="color: var(--accent-color); margin-right: 8px;"></i> Full Name</label>
+                    <input type="text" id="bName" placeholder="e.g. John Doe" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label"><i class="fa-solid fa-phone" style="color: var(--accent-color); margin-right: 8px;"></i> Phone Number</label>
+                    <input type="tel" id="bPhone" placeholder="e.g. +91 9876543210" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label"><i class="fa-solid fa-toolbox" style="color: var(--accent-color); margin-right: 8px;"></i> Service Required</label>
+                    <select id="bType" class="form-control" required>
+                        <option value="">Select a service category...</option>
+                        <option value="PC Repair & Upgrade">PC Repair & Upgrade</option>
+                        <option value="Laptop Servicing">Laptop Servicing</option>
+                        <option value="Printer Repair">Printer Repair</option>
+                        <option value="Network Installation">Network Installation</option>
+                        <option value="Software/OS Installation">Software / OS Installation</option>
+                        <option value="General Diagnostics">General Diagnostics</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label"><i class="fa-solid fa-desktop" style="color: var(--accent-color); margin-right: 8px;"></i> Device Details</label>
+                    <input type="text" id="bDevice" placeholder="e.g. Dell Inspiron 15 / HP Printer" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label"><i class="fa-solid fa-circle-exclamation" style="color: var(--accent-color); margin-right: 8px;"></i> Issue Description</label>
+                    <textarea id="bIssue" rows="4" placeholder="Briefly describe the exact problem you are facing..." class="form-control" required></textarea>
+                </div>
+                
+                <div style="padding: 16px; background-color: #FFFFFF; border-radius: 8px; border: 1px dashed #94A3B8; margin-bottom: 24px; margin-top: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                    <p style="font-size: 0.875rem; color: var(--text-light); margin: 0; display: flex; align-items: flex-start;">
+                        <i class="fa-solid fa-circle-check" style="color: var(--accent-color); margin-top: 2px; margin-right: 8px;"></i>
+                        By submitting this form, an automated appointment request will be securely sent to our technical staff.
+                    </p>
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-100" style="padding: 16px; font-weight: bold; font-size: 1.1rem;"><i class="fa-solid fa-calendar-check" style="margin-right: 8px;"></i> Request Appointment</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container grid footer-grid">
+            <div class="footer-about">
+                <a href="index.html" class="logo" style="margin-bottom: 16px; display: inline-block;">
+                    <span style="font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.5rem; color: white;">
+                        <i class="fa-solid fa-microchip" style="color: var(--accent-color);"></i> Innovative<span style="color: var(--accent-color);">Infosys</span>
+                    </span>
+                </a>
+                <p>Your trusted local partner for premium electronics sales, customized assemblies, and expert technical repairs.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#shop">Shop</a></li>
+                    <li><a href="admin.html" style="color: #60A5FA; font-weight: bold;"><i class="fa-solid fa-lock"></i> Admin Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> Jalgaon, India</li>
+                    <li><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> +91 82755 29990</li>
+                    <li><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> support@innovativeinfosys.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Innovative Infosys Systems. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('bName').value;
+            const phone = document.getElementById('bPhone').value;
+            const type = document.getElementById('bType').value;
+            const device = document.getElementById('bDevice').value;
+            const issue = document.getElementById('bIssue').value;
+            
+            let message = "Hello Innovative Infosys! I would like to book a service appointment.%0A%0A";
+            message += `*Customer:* ${name}%0A`;
+            message += `*Phone:* ${phone}%0A%0A`;
+            message += `*Service Requested:* ${type}%0A`;
+            message += `*Device Details:* ${device}%0A`;
+            message += `*Issue Description:* ${issue}%0A%0A`;
+            message += `Please let me know when I can bring this in for diagnostics!`;
+            
+            // Open WhatsApp
+            window.open(`https://wa.me/918275529990?text=${message}`, '_blank');
+        });
+    </script>
+</body>
+</html>
