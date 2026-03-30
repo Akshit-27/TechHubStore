@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Innovative Infosys</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Admin specific minimal overrides */
+        body {
+            background-color: var(--neutral-color);
+        }
+
+        .admin-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+
+        .admin-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .product-table th,
+        .product-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .product-table th {
+            background-color: #F8FAFC;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .product-image-cell img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: var(--border-radius-sm);
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 0.875rem;
+            border-radius: var(--border-radius-sm);
+        }
+
+        /* Modal for Add/Edit */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1050;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 32px;
+            border-radius: var(--border-radius-lg);
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #CBD5E1;
+            border-radius: var(--border-radius-sm);
+            font-family: var(--font-body);
+        }
+
+        /* Login Screen */
+        .login-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: var(--neutral-color);
+        }
+
+        .login-card {
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        #dashboard-view {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Login View -->
+    <div class="login-screen" id="login-view">
+        <div class="login-card">
+            <h2 class="mb-4">Admin Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Enter Admin Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <div id="login-error" class="text-danger mt-3" style="color: red; display: none;">Invalid Password</div>
+            </form>
+            <div class="mt-4"><a href="/" class="btn-outline btn w-100">Back to Store</a></div>
+        </div>
+    </div>
+
+    <!-- Dashboard View -->
+    <div id="dashboard-view">
+        <header class="admin-header">
+            <div class="container d-flex" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+                <h2 style="color: white; margin:0;">Admin Dashboard</h2>
+                <div style="display:flex; gap:16px; align-items:center;">
+                    <button id="addNewBtn" style="background-color: #FFFFFF; color: #0F172A; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px; padding: 10px 20px; border-radius: 8px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2); border: none; cursor: pointer; display: inline-flex; align-items: center; white-space: nowrap;">
+                        <i class="fa-solid fa-plus" style="margin-right: 8px; color: #2563EB;"></i> List New Product
+                    </button>
+                    <button class="btn btn-outline btn-sm" id="logoutBtn" style="color: white; border-color: rgba(255,255,255,0.4);">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="container admin-container mb-4">
+            <div style="border-bottom:1px solid #E2E8F0; padding-bottom:16px;" class="mb-4">
+                <h2 style="margin: 0;">Product Inventory</h2>
+            </div>
+
+            <div style="overflow-x:auto;">
+                <table class="product-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price (₹)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTableBody">
+                        <!-- Rendered dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <div style="display:flex; justify-content:space-between; align-items:center;" class="mb-4">
+                <h3 id="modalTitle">List New Product</h3>
+                <button class="btn btn-outline btn-sm" id="closeModalBtn"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <form id="productForm">
+                <input type="hidden" id="prodId">
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" id="prodName" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="prodCategory" required>
+                        <option value="">Select a Category...</option>
+                        <option value="Assembled computers">Assembled computers</option>
+                        <option value="Computer peripherals parts">Computer peripherals parts</option>
+                        <option value="Laptops">Laptops</option>
+                        <option value="Laptop accessories">Laptop accessories</option>
+                        <option value="Printers">Printers</option>
+                        <option value="Anti-virus & ERP software's">Anti-virus & ERP software's</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Price (₹)</label>
+                    <input type="number" id="prodPrice" required min="0" step="1">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="prodDesc" rows="3" required></textarea>
+                </div>
+                <!-- Dynamic Image Upload -->
+                <div class="form-group">
+                    <label>Product Image</label>
+                    <input type="file" id="prodImageFile" accept="image/*">
+                    <small style="color:var(--text-light); display:block; margin-top:4px;">Upload from your computer
+                        (auto-compressed).</small>
+                    <input type="hidden" id="prodImageBase64">
+                    <div id="imagePreview" style="margin-top: 10px; display: none;">
+                        <img id="previewImg" src=""
+                            style="width: 100px; border-radius: 8px; border: 1px solid #CBD5E1; padding: 4px;">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mt-4">Save Product</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>

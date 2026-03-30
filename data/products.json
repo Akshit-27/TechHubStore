@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Premium Wireless Mouse",
+    "category": "Computer Accessories",
+    "price": 1200,
+    "description": "Ergonomic wireless mouse with silent clicks and long battery life.",
+    "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&q=80"
+  },
+  {
+    "id": 2,
+    "name": "Fast Charge USB-C Cable",
+    "category": "Mobile Accessories",
+    "price": 450,
+    "description": "Nylon braided durable charging cable, 2 meters.",
+    "image": "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=400&q=80"
+  },
+  {
+    "id": 3,
+    "name": "Wi-Fi 6 Router",
+    "category": "Networking",
+    "price": 4500,
+    "description": "High-speed dual-band router for seamless streaming.",
+    "image": "https://plus.unsplash.com/premium_photo-1678032742914-9babe6578ff7?w=400&q=80"
+  }
+]
