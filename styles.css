@@ -765,13 +765,28 @@ header:not(.scrolled) .logo {
 /* Modals & Overlays */
 .modal-overlay {
     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.5); display: none;
-    z-index: 1050; transition: var(--transition);
+    background: rgba(15, 23, 42, 0.6); display: none;
+    backdrop-filter: blur(4px);
+    z-index: 1050; transition: all 0.3s ease;
 }
-.modal-overlay.active { display: block; }
+.modal-overlay.active { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+.modal-content {
+    background-color: #F8FAFC; 
+    padding: 32px;
+    border-radius: 16px;
+    width: 100%;
+    margin: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
 .cart-content {
     background: white; padding: 24px; box-shadow: var(--shadow-lg);
-    display: flex; flex-direction: column;
+    display: flex; flex-direction: column; border-radius: 0; margin: 0; height: 100%;
 }
 .product-card {
     transition: var(--transition); cursor: default;
@@ -779,4 +794,37 @@ header:not(.scrolled) .logo {
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
+}
+
+/* Base Form Layout */
+.form-control {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--primary-color);
+    transition: all 0.2s ease;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+.form-group {
+    margin-bottom: 8px;
 }
