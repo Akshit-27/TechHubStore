@@ -247,23 +247,28 @@
             <form id="pcConfigForm">
                 <input type="hidden" id="configProductId">
                 <div class="form-group">
-                    <label>Preferred Processor</label>
-                    <input type="text" id="configProcessor" placeholder="e.g. Intel Core i5 or Ryzen 5" required style="width:100%; padding:10px; border:1px solid #CBD5E1; border-radius:4px; margin-bottom:12px;">
+                    <label class="form-label"><i class="fa-solid fa-microchip" style="color: var(--accent-color); margin-right: 8px;"></i> Preferred Processor</label>
+                    <input type="text" id="configProcessor" placeholder="e.g. Intel Core i5 or Ryzen 5" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label>RAM & Storage</label>
-                    <input type="text" id="configRamStorage" placeholder="e.g. 16GB RAM + 512GB SSD" required style="width:100%; padding:10px; border:1px solid #CBD5E1; border-radius:4px; margin-bottom:12px;">
+                    <label class="form-label"><i class="fa-solid fa-memory" style="color: var(--accent-color); margin-right: 8px;"></i> RAM & Storage</label>
+                    <input type="text" id="configRamStorage" placeholder="e.g. 16GB RAM + 512GB SSD" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label>Monitor Size</label>
-                    <input type="text" id="configMonitor" placeholder="e.g. 24 inch / 27 inch / None explicitly" required style="width:100%; padding:10px; border:1px solid #CBD5E1; border-radius:4px; margin-bottom:12px;">
+                    <label class="form-label"><i class="fa-solid fa-desktop" style="color: var(--accent-color); margin-right: 8px;"></i> Monitor Size</label>
+                    <input type="text" id="configMonitor" placeholder="e.g. 24 inch / 27 inch / None" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label>Purpose of PC</label>
-                    <textarea id="configPurpose" rows="3" placeholder="e.g. Gaming, Office work, Editing, AutoCAD..." required style="width:100%; padding:10px; border:1px solid #CBD5E1; border-radius:4px; margin-bottom:12px; font-family:inherit;"></textarea>
+                    <label class="form-label"><i class="fa-solid fa-crosshairs" style="color: var(--accent-color); margin-right: 8px;"></i> Purpose of PC</label>
+                    <textarea id="configPurpose" rows="3" placeholder="e.g. Gaming, Office work, Editing, AutoCAD..." class="form-control" required></textarea>
                 </div>
-                <p style="font-size: 0.875rem; color: var(--text-light); margin-bottom: 20px;">* Price will be calculated exactly to your specs and sent via WhatsApp.</p>
-                <button type="submit" class="btn btn-primary w-100">Add to Request Cart</button>
+                <div style="padding: 16px; background-color: #F8FAFC; border-radius: 8px; border: 1px dashed #CBD5E1; margin-bottom: 24px; margin-top: 8px;">
+                    <p style="font-size: 0.875rem; color: var(--text-light); margin: 0; display: flex; align-items: flex-start;">
+                        <i class="fa-solid fa-circle-info" style="color: var(--accent-color); margin-top: 2px; margin-right: 8px;"></i>
+                        A custom quote will be calculated based on your specifications and sent to us via WhatsApp.
+                    </p>
+                </div>
+                <button type="submit" class="btn btn-primary w-100" style="padding: 16px; font-weight: bold; font-size: 1.1rem;"><i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Save Request</button>
             </form>
         </div>
     </div>
